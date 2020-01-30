@@ -2,7 +2,7 @@
 This utility is used to compare two images at a time and respond with difference percentage between them.
 
 ### Input
-This utility will allow to select CSV file in a structure like below with absolute path to images.
+This utility allow user to select CSV file in a structure like below with absolute path to images.
 
 
 | image1 | image2 |
@@ -11,7 +11,7 @@ This utility will allow to select CSV file in a structure like below with absolu
 | c.jpg  | d.jpg  |
 
 ### Output
-This utility will create a output CSV file based on input CSV file in a structure like below.
+This utility will create an output CSV file based on input CSV file in a structure like below.
 
 | image1 | image2 | similar | elapsed | 
 | ------------- | ------------- | ------------- | ------------- |
@@ -21,7 +21,7 @@ This utility will create a output CSV file based on input CSV file in a structur
 ## Documentation
 
 * [User Manual](https://github.com/mkthakral/ImageComparisionTool/blob/master/ImageComparision/resources/document/User_Manual.pdf) This document detailed information about how to setup and use this utility.
-* [Developer Manual](https://github.com/mkthakral/ImageComparisionTool/blob/master/ImageComparision/resources/document/Developer_Manual.pdf) This document contains detailed information about setting up this code, modifying it and maintain it.
+* [Developer Manual](https://github.com/mkthakral/ImageComparisionTool/blob/master/ImageComparision/resources/document/Developer_Manual.pdf) This document contains detailed information about setting up the code base, modify it and maintain it.
 
 ## Programming Language
 
