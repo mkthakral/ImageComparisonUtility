@@ -1,0 +1,9 @@
+./resources/Image1.jpg,./resources/Image1.jpg,0,8.537
+./resources/Image1.png,./resources/Image1.png,0,2.293
+./resources/Image2.png,./resources/Image2.jpg,0,2.318
+./resources/Image1.png,./resources/Image2.png,15.59,2.889
+./resources/Image1.png,WrongFile.png,Error: File 2: Image not found at specified location,0.0
+WrongFile.png,./resources/Image2.png,Error: File 1: Image not found at specified location,0.0
+WrongFile.png,WrongFile.png,Error: File 1: Image not found at specified location,0.0
+./resources/Image1.png,,Error: File 2: Image not found at specified location,0.0
+,./resources/Image1.png,Error: File 1: Image path missing in input file,0.0

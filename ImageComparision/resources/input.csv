@@ -1,0 +1,9 @@
+./resources/Image1.jpg,./resources/Image1.jpg,//Same Image
+./resources/Image1.png,./resources/Image1.png,"//Same Image, Different Extension"
+./resources/Image2.png,./resources/Image2.jpg,"//Same Image, Different Extension"
+./resources/Image1.png,./resources/Image2.png,//Different Image
+./resources/Image1.png,WrongFile.png,//One Image name is wrong
+WrongFile.png,./resources/Image2.png,//One Image name is wrong
+WrongFile.png,WrongFile.png,//Both Images names are wrong
+./resources/Image1.png,,//One Image name is missing
+,./resources/Image1.png,//One Image name is missing
