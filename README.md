@@ -1,6 +1,23 @@
 # Image Comparison Utilty
 This utility is used to compare two images at a time and respond with difference percentage between them.
 
+### Input
+This utility will allow to select CSV file in a structure like below with absolute path to images.
+
+
+| image1 | image2 |
+| ------------- | ------------- |
+| a.jpg  | b.jpg  |
+| c.jpg  | d.jpg  |
+
+### Output
+This utility will create a output CSV file based on input CSV file in a structure like below.
+
+| image1 | image2 | similar | elapsed | 
+| ------------- | ------------- | ------------- | ------------- |
+| a.jpg  | b.jpg  | 0 | 0.004 |
+| c.jpg  | d.jpg  | 15 | 0.003 |
+
 ## Documentation
 
 * [User Manual](https://github.com/mkthakral/ImageComparisionTool/blob/master/ImageComparision/resources/document/User_Manual.pdf) This document detailed information about how to setup and use this utility.
