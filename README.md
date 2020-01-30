@@ -10,3 +10,9 @@ This utility is used to compare two images at a time and respond with difference
 
 This application is built using Java, version 1.8.0_231
 
+## System Requirments
+
+This utilty is tested on following operatin systems with JRE 1.8.0_231
+
+* Windows 10
+* Mac OS Mojave 10.14.6
