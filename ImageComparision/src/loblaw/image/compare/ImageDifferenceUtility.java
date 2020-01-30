@@ -3,6 +3,7 @@ package loblaw.image.compare;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -55,7 +56,7 @@ public class ImageDifferenceUtility extends JFrame implements ActionListener {
 	public static void main(String[] args) {
 
 		// Creating JFrame for user form
-		JFrame jFrame = new JFrame(ImageUtilityConstants.FRAME_TITLE);
+		JFrame jFrame = new JFrame(ImageUtilityConstants.FRAME_TITLE + ImageUtilityConstants.STRING_SPACE + ImageUtilityConstants.VERSION);
 		// Set the size of the frame
 		jFrame.setSize(ImageUtilityConstants.IMAGE_WIDTH, ImageUtilityConstants.IMAGE_HEIGHT);
 		// Set default close option
@@ -76,7 +77,8 @@ public class ImageDifferenceUtility extends JFrame implements ActionListener {
 
 		// Create JPanel to add the buttons and labels
 		JPanel jPanel = new JPanel();
-
+		
+		
 		// Add all elements to the panel
 		jPanel.add(jLabel);
 		jPanel.add(browseButton);

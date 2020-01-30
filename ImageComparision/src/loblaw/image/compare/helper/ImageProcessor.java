@@ -41,7 +41,7 @@ public class ImageProcessor {
 	 * 
 	 */
 	public ImageProcessOuput processInput(String csvInput) throws Exception {
-
+		
 		// Checking if file is valid or not
 		if (!isFileValid(csvInput)) {
 			return new ImageProcessOuput(ImageUtilityConstants.ERROR_EMPTY_FILE, "");
@@ -60,7 +60,8 @@ public class ImageProcessor {
 		String currentInputRow = "";
 		// Create references to note start and end time of execution
 		Instant executionStartTime, executionFinishTime;
-
+		// row counter
+		int rowCounter = 1;
 		// Read and process input file
 		try {
 
@@ -68,33 +69,38 @@ public class ImageProcessor {
 			bufferedReader = new BufferedReader(new FileReader(csvInput));
 			// Loop input file, row wise
 			while ((currentInputRow = bufferedReader.readLine()) != null) {
-				executionStartTime = Instant.now();
-				outputRow = new String[4];
-				// Breaking input row into array
-				inputRow = currentInputRow.split(ImageUtilityConstants.COMMA);
-
-				// Preparing first two columns for output file i.e. image paths
-				outputRow[0] = ((inputRow[0] == null || inputRow[0] == "") ? "" : inputRow[0]);
-				outputRow[1] = (inputRow.length < 2) ? "" : inputRow[1];
-
-				// Preparing column three for output file i.e. difference in image
-				String validateRowResponse = validateInputRow(inputRow);
-				if (validateRowResponse.isEmpty()) {
-					difference = compareImage(inputRow[0], inputRow[1]);
-					outputRow[2] = (difference.equals(ImageUtilityConstants.ERROR_CODE_DIMENSION_MISMATCH))
-							? ImageUtilityConstants.ERROR_DIMENSION_MISMATCH
-							: difference;
+				if (rowCounter == 1) {
+					outputList.add(ImageUtilityConstants.OUTPUT_FILE_TABLE_HEADING);
 				} else {
-					outputRow[2] = validateRowResponse;
+					executionStartTime = Instant.now();
+					outputRow = new String[4];
+					// Breaking input row into array
+					inputRow = currentInputRow.split(ImageUtilityConstants.COMMA);
+
+					// Preparing first two columns for output file i.e. image paths
+					outputRow[0] = ((inputRow[0] == null || inputRow[0] == "") ? "" : inputRow[0]);
+					outputRow[1] = (inputRow.length < 2) ? "" : inputRow[1];
+
+					// Preparing column three for output file i.e. difference in image
+					String validateRowResponse = validateInputRow(inputRow);
+					if (validateRowResponse.isEmpty()) {
+						difference = compareImage(inputRow[0], inputRow[1]);
+						outputRow[2] = (difference.equals(ImageUtilityConstants.ERROR_CODE_DIMENSION_MISMATCH))
+								? ImageUtilityConstants.ERROR_DIMENSION_MISMATCH
+								: difference;
+					} else {
+						outputRow[2] = validateRowResponse;
+					}
+
+					// Preparing column four for output file i.e. execution time
+					executionFinishTime = Instant.now();
+					outputRow[3] = (double) Duration.between(executionStartTime, executionFinishTime).toMillis() / 1000
+							+ "";
+
+					// Adding prepared row in the list
+					outputList.add(outputRow);
 				}
-
-				// Preparing column four for output file i.e. execution time
-				executionFinishTime = Instant.now();
-				outputRow[3] = (double) Duration.between(executionStartTime, executionFinishTime).toMillis() / 1000
-						+ "";
-
-				// Adding prepared row in the list
-				outputList.add(outputRow);
+				rowCounter++;
 
 			}
 		} finally {
@@ -110,6 +116,7 @@ public class ImageProcessor {
 
 		// returning process result
 		return new ImageProcessOuput(ImageUtilityConstants.ERROR_NONE, outputFile);
+		
 
 	}
 

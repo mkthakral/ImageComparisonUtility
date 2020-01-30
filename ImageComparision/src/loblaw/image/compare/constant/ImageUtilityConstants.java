@@ -1,17 +1,20 @@
 package loblaw.image.compare.constant;
 
 /**
- * @author Mohit Kumar 
+ * @author Mohit Kumar
  * 
- * Description: This class holds labels, error messages and bit of configuration in form of static variables
+ *         Description: This class holds labels, error messages and bit of
+ *         configuration in form of static variables
  * 
  */
 
 public class ImageUtilityConstants {
 	// Configuration
+	public static String VERSION = "(Version-1)";
 	public static int IMAGE_WIDTH = 700;
-	public static int IMAGE_HEIGHT = 400;
+	public static int IMAGE_HEIGHT = 150;
 	public static String EXTENSION_CSV = ".csv";
+	public static String[] OUTPUT_FILE_TABLE_HEADING = { "image1", "image2", "similar", "elapsed" };
 
 	// Labels & others
 	public static String FRAME_TITLE = "Image Comparison Tool";
@@ -41,5 +44,6 @@ public class ImageUtilityConstants {
 	public static String FILE_TWO = "File 2: ";
 	public static String COMMA = ",";
 	public static String STRING_BLANK = "";
+	public static String STRING_SPACE = " ";
 
 }
