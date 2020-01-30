@@ -1,2 +1,2 @@
 # ImageComparisionTool
-Compares Two Images, Tells Difference of Percentage between the two
+This utility is used to compare two images at a time and respond with difference percentage between them.
