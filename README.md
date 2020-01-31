@@ -21,7 +21,7 @@ This utility will create an output CSV file based on input CSV file in a structu
 ## Documentation
 
 * [User Manual](https://github.com/mkthakral/ImageComparisionTool/blob/master/ImageComparision/resources/document/User_Manual.pdf) This document detailed information about how to setup and use this utility.
-* [Developer Manual](https://github.com/mkthakral/ImageComparisionTool/blob/master/ImageComparision/resources/document/Developer_Manual.pdf) This document contains detailed information about setting up the code base, modify it and maintain it.
+* [Developer Manual](https://github.com/mkthakral/ImageComparisionTool/blob/master/ImageComparision/resources/document/Developer_Manual.pdf) This document contains detailed information about setting up the code base, modify it and maintain it. It also has details about how the comparision algorithm functions.
 
 ## Programming Language
 
