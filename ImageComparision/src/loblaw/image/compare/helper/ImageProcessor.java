@@ -1,5 +1,6 @@
 package loblaw.image.compare.helper;
 
+import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.File;
@@ -15,6 +16,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
 import javax.imageio.ImageIO;
 
 import loblaw.image.compare.constant.ImageUtilityConstants;
@@ -41,7 +43,7 @@ public class ImageProcessor {
 	 * 
 	 */
 	public ImageProcessOuput processInput(String csvInput) throws Exception {
-		
+
 		// Checking if file is valid or not
 		if (!isFileValid(csvInput)) {
 			return new ImageProcessOuput(ImageUtilityConstants.ERROR_EMPTY_FILE, "");
@@ -116,7 +118,6 @@ public class ImageProcessor {
 
 		// returning process result
 		return new ImageProcessOuput(ImageUtilityConstants.ERROR_NONE, outputFile);
-		
 
 	}
 
@@ -217,8 +218,14 @@ public class ImageProcessor {
 	 * @throws IOException
 	 */
 	private String compareImage(String imageOnePath, String imageTwoPath) throws IOException {
+		// Buffered Image Reference for two input images
 		BufferedImage image1 = null;
 		BufferedImage image2 = null;
+		// Color References for images
+		Color colorImage1;
+		Color colorImage2;
+
+		// To format output percentage
 		DecimalFormat differenceFormat = new DecimalFormat("#.##");
 
 		// Creating File objects of images
@@ -243,25 +250,14 @@ public class ImageProcessor {
 			long pixelDifference = 0;
 			for (int y = 0; y < imageOneHeight; y++) {
 				for (int x = 0; x < imageOneWidth; x++) {
-
-					// Getting RGBs of both images
-					int rgbImageOne = image1.getRGB(x, y);
-					int rgbImageTwo = image2.getRGB(x, y);
-
-					// Getting Red, Green, Blue for image 1
-					int redImageOne = (rgbImageOne >> 16) & 0xff;
-					int greenImageOne = (rgbImageOne >> 8) & 0xff;
-					int blueImageOne = (rgbImageOne) & 0xff;
-
-					// Getting Red, Green, Blue for image 2
-					int redImageTwo = (rgbImageTwo >> 16) & 0xff;
-					int greenImageTwo = (rgbImageTwo >> 8) & 0xff;
-					int blueImageTwo = (rgbImageTwo) & 0xff;
+					// Create color object for both images
+					colorImage1 = new Color(image1.getRGB(x, y));
+					colorImage2 = new Color(image2.getRGB(x, y));
 
 					// Adding all differences in Red, Green, Blue
-					pixelDifference += Math.abs(redImageOne - redImageTwo);
-					pixelDifference += Math.abs(greenImageOne - greenImageTwo);
-					pixelDifference += Math.abs(blueImageOne - blueImageTwo);
+					pixelDifference += Math.abs(colorImage1.getRed() - colorImage2.getRed());
+					pixelDifference += Math.abs(colorImage1.getGreen() - colorImage2.getGreen());
+					pixelDifference += Math.abs(colorImage1.getBlue() - colorImage2.getBlue());
 				}
 			}
 
@@ -278,5 +274,4 @@ public class ImageProcessor {
 			return differenceFormat.format(differencePercentage);
 		}
 	}
-
 }
